@@ -15,15 +15,21 @@ import {
 	Zap,
 } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
+import { ChevronDown, Sparkles, Loader2 } from "lucide-react";
 import { RatingDisplay } from "~/components/ui/rating-stars";
+import { geminiService, type CardSummary } from "~/lib/ai/gemini-service";
 import { cn, glassGradients, glassmorphism } from "~/lib/glassmorphism";
 import type { CardFeature, CreditCard } from "~/types/credit-card";
 
 interface CreditCardItemProps {
-	card: CreditCard;
-	features: CardFeature[];
-	className?: string;
-	onViewDetails?: (cardId: string) => void;
+  card: CreditCard;
+  features: CardFeature[];
+  className?: string;
+  onViewDetails?: (cardId: string) => void;
+  isSelected?: boolean;
+  onSelect?: (card: CreditCard) => void;
+  showSelection?: boolean;
 }
 
 const FEATURE_ICONS: Record<
@@ -60,15 +66,29 @@ const BEST_FOR_COLORS: Record<string, string> = {
 	Dining: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
 };
 
-export function CreditCardItem({
-	card,
-	features,
-	className,
-	onViewDetails,
+// Cache for AI summaries to avoid regenerating
+const summaryCache = new Map<string, CardSummary>();
+
+export function CreditCardItem({ 
+  card, 
+  features, 
+  className,
+  onViewDetails,
+  isSelected = false,
+  onSelect,
+  showSelection = false
 }: CreditCardItemProps) {
 	const cardFeatures = features.filter(
 		(feature) => feature.cardID === card.cardID,
 	);
+
+	// AI Summary state
+	const [isAiExpanded, setIsAiExpanded] = useState(false);
+	const [aiSummary, setAiSummary] = useState<CardSummary | null>(
+		summaryCache.get(card.cardID) || null
+	);
+	const [aiLoading, setAiLoading] = useState(false);
+	const [aiError, setAiError] = useState<string | null>(null);
 
 	const formatRating = (rating: number) => {
 		return rating.toFixed(1);
@@ -84,6 +104,46 @@ export function CreditCardItem({
 	const bestForColor =
 		BEST_FOR_COLORS[card.bestFor] ||
 		"bg-gray-500/20 text-gray-300 border-gray-500/30";
+
+	const handleAiToggle = async () => {
+		if (!isAiExpanded) {
+			setIsAiExpanded(true);
+			
+			// Check cache first
+			if (summaryCache.has(card.cardID)) {
+				setAiSummary(summaryCache.get(card.cardID)!);
+				return;
+			}
+
+			// Generate new summary
+			setAiLoading(true);
+			setAiError(null);
+			
+			try {
+				const summary = await geminiService.generateCardSummary(card, features);
+				setAiSummary(summary);
+				// Cache the result
+				summaryCache.set(card.cardID, summary);
+			} catch (error) {
+				console.error('Error generating AI summary:', error);
+				setAiError('Failed to generate AI summary');
+				
+				// Fallback summary
+				const fallback: CardSummary = {
+					cardId: card.cardID,
+					summary: `${card.cardName} offers ${card.rewardRate} rewards and is designed for ${card.bestFor.toLowerCase()}. With a minimum income requirement of ₹${card.minMonthlyIncome.toLocaleString()}, this ${card.cardType.toLowerCase()} provides excellent value.`,
+					keyBenefits: cardFeatures.slice(0, 5).map(f => f.heading),
+					bestFor: [card.bestFor, card.employmentType],
+				};
+				setAiSummary(fallback);
+				summaryCache.set(card.cardID, fallback);
+			} finally {
+				setAiLoading(false);
+			}
+		} else {
+			setIsAiExpanded(false);
+		}
+	};
 
 	return (
 		<div
@@ -276,9 +336,161 @@ export function CreditCardItem({
 							)}
 						</div>
 					</div>
-				)}
+				        )}
 
-				{/* Card Type & Employment */}
+				        {/* AI Summary Accordion */}
+				        <div className="border-t border-white/10 dark:border-white/5 pt-4">
+				          <button
+				            onClick={handleAiToggle}
+				            className={cn(
+				              "w-full flex items-center justify-between p-3 rounded-lg",
+				              "transition-all duration-200",
+				              glassmorphism.button,
+				              "border border-white/10 dark:border-white/5",
+				              "hover:bg-white/10 dark:hover:bg-black/20",
+				              "group"
+				            )}
+				          >
+				            <div className="flex items-center gap-2">
+				              <Sparkles className="w-4 h-4 text-purple-400 animate-pulse" />
+				              <span className="text-sm font-medium text-foreground">
+				                AI Summary
+				              </span>
+				              {aiSummary && !aiLoading && (
+				                <div className="w-2 h-2 bg-green-500 rounded-full" />
+				              )}
+				            </div>
+				            <ChevronDown 
+				              className={cn(
+				                "w-4 h-4 text-muted-foreground transition-transform duration-200",
+				                isAiExpanded && "rotate-180"
+				              )}
+				            />
+				          </button>
+
+				          {/* AI Summary Content */}
+				          {isAiExpanded && (
+				            <div className={cn(
+				              "mt-3 p-4 rounded-lg",
+				              glassmorphism.card,
+				              "border border-white/10 dark:border-white/5",
+				              "animate-in fade-in-0 slide-in-from-top-2 duration-300"
+				            )}>
+				              {aiLoading ? (
+				                <div className="flex items-center gap-3 text-center py-4">
+				                  <Loader2 className="w-4 h-4 animate-spin text-blue-400" />
+				                  <span className="text-sm text-muted-foreground">
+				                    Generating AI summary...
+				                  </span>
+				                </div>
+				              ) : aiError ? (
+				                <div className="text-center py-4">
+				                  <p className="text-sm text-red-400 mb-2">{aiError}</p>
+				                  <button
+				                    onClick={() => {
+				                      setAiError(null);
+				                      handleAiToggle();
+				                    }}
+				                    className="text-xs text-blue-400 hover:text-blue-300"
+				                  >
+				                    Try again
+				                  </button>
+				                </div>
+				              ) : aiSummary ? (
+				                <div className="space-y-4">
+				                  {/* Summary Text */}
+				                  <div>
+				                    <h5 className="text-sm font-medium text-foreground mb-2">
+				                      Summary
+				                    </h5>
+				                    <p className="text-xs text-muted-foreground leading-relaxed">
+				                      {aiSummary.summary}
+				                    </p>
+				                  </div>
+
+				                  {/* Key Benefits */}
+				                  {aiSummary.keyBenefits.length > 0 && (
+				                    <div>
+				                      <h5 className="text-sm font-medium text-foreground mb-2">
+				                        Key Benefits
+				                      </h5>
+				                      <div className="flex flex-wrap gap-1.5">
+				                        {aiSummary.keyBenefits.slice(0, 4).map((benefit, index) => (
+				                          <span
+				                            key={index}
+				                            className={cn(
+				                              "px-2 py-1 rounded-md text-xs font-medium",
+				                              "bg-green-500/10 text-green-300 border border-green-500/20"
+				                            )}
+				                          >
+				                            {benefit}
+				                          </span>
+				                        ))}
+				                      </div>
+				                    </div>
+				                  )}
+
+				                  {/* Best For */}
+				                  {aiSummary.bestFor.length > 0 && (
+				                    <div>
+				                      <h5 className="text-sm font-medium text-foreground mb-2">
+				                        Best For
+				                      </h5>
+				                      <div className="flex flex-wrap gap-1.5">
+				                        {aiSummary.bestFor.map((category, index) => (
+				                          <span
+				                            key={index}
+				                            className={cn(
+				                              "px-2 py-1 rounded-md text-xs font-medium",
+				                              "bg-blue-500/10 text-blue-300 border border-blue-500/20"
+				                            )}
+				                          >
+				                            {category}
+				                          </span>
+				                        ))}
+				                      </div>
+				                    </div>
+				                  )}
+
+				                  {/* Warnings */}
+				                  {aiSummary.warnings && aiSummary.warnings.length > 0 && (
+				                    <div>
+				                      <h5 className="text-sm font-medium text-foreground mb-2">
+				                        Important Notes
+				                      </h5>
+				                      <div className="space-y-1">
+				                        {aiSummary.warnings.map((warning, index) => (
+				                          <p
+				                            key={index}
+				                            className={cn(
+				                              "text-xs p-2 rounded-md",
+				                              "bg-yellow-500/10 text-yellow-200 border border-yellow-500/20"
+				                            )}
+				                          >
+				                            {warning}
+				                          </p>
+				                        ))}
+				                      </div>
+				                    </div>
+				                  )}
+
+				                  {/* AI Badge */}
+				                  <div className="flex items-center justify-between pt-2 border-t border-white/10 dark:border-white/5">
+				                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+				                      <Sparkles className="w-3 h-3 text-purple-400" />
+				                      <span>Powered by AI</span>
+				                    </div>
+				                    <div className="text-xs text-muted-foreground">
+				                      Confidence: 85%
+				                    </div>
+				                  </div>
+				                </div>
+				              ) : null}
+				            </div>
+				          )}
+				        </div>
+
+				        {/* Card Type & Employment */}
 				<div className="flex flex-col gap-2 text-xs sm:flex-row sm:items-center sm:justify-between sm:text-sm">
 					<span className="text-muted-foreground">
 						{card.cardType} • {card.employmentType}

@@ -114,7 +114,7 @@ export function SelectFilter({
 			{isOpen && (
 				<div
 					className={cn(
-						"absolute top-full right-0 left-0 z-50 mt-2",
+						"absolute top-full right-0 left-0 z-[9999] mt-2",
 						"overflow-hidden rounded-xl shadow-2xl",
 						"border border-white/10 dark:border-white/5",
 						glassmorphism.dropdown,
