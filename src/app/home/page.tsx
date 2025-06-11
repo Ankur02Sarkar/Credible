@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "~/components/ui/button";
 
 export default function Home() {
@@ -117,7 +118,7 @@ export default function Home() {
 			</div>
 
 			<div className="creditCardsContainer"></div>
-			<Button onClick={handleSearch}>Load More</Button>
+			<Button onClick={() => handleSearch()}>Load More</Button>
 		</div>
 	);
 }
