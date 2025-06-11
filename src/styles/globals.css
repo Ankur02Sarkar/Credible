@@ -126,34 +126,36 @@
 
 /* Custom animations for glassmorphism */
 @keyframes float {
-	0%, 100% { 
-		transform: translateY(0px); 
+	0%,
+	100% {
+		transform: translateY(0px);
 	}
-	50% { 
-		transform: translateY(-10px); 
+	50% {
+		transform: translateY(-10px);
 	}
 }
 
 @keyframes glow {
-	from { 
-		box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); 
+	from {
+		box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 	}
-	to { 
-		box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); 
+	to {
+		box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 	}
 }
 
 @keyframes shimmer {
-	0% { 
-		background-position: -200% 0; 
+	0% {
+		background-position: -200% 0;
 	}
-	100% { 
-		background-position: 200% 0; 
+	100% {
+		background-position: 200% 0;
 	}
 }
 
 @keyframes pulse-glow {
-	0%, 100% {
+	0%,
+	100% {
 		opacity: 0.4;
 		box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
 	}
@@ -186,7 +188,8 @@
 }
 
 @keyframes bounce-subtle {
-	0%, 100% {
+	0%,
+	100% {
 		transform: translateY(0);
 	}
 	50% {

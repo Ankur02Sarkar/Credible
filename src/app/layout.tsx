@@ -2,6 +2,7 @@ import "~/styles/globals.css";
 
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import { HeroHeader } from "~/components/header";
 import { ThemeProvider } from "~/components/theme-provider";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
 					enableSystem
 					disableTransitionOnChange
 				>
+					<HeroHeader />
 					{children}
 				</ThemeProvider>
 			</body>

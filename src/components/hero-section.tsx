@@ -9,7 +9,6 @@ import SBILogo from "~/assets/banks/sbi.png";
 import { AnimatedGroup } from "~/components/ui/animated-group";
 import { Button } from "~/components/ui/button";
 import { TextEffect } from "~/components/ui/text-effect";
-import { HeroHeader } from "./header";
 
 const transitionVariants = {
 	item: {
@@ -34,7 +33,6 @@ const transitionVariants = {
 export default function HeroSection() {
 	return (
 		<>
-			<HeroHeader />
 			<main className="overflow-hidden">
 				<div
 					aria-hidden
