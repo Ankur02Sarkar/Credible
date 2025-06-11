@@ -1,8 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 // app/api/cards/route.ts
 import { type NextRequest, NextResponse } from "next/server";
-
-const prisma = new PrismaClient();
+import { prisma } from "~/lib/database";
 
 export async function POST(req: NextRequest) {
 	try {
@@ -169,31 +168,15 @@ export async function POST(req: NextRequest) {
 
 		// Construct the response in the expected format
 		const response = {
-			thisCard: null,
-			issuerList: null,
 			cardType: cardTypes.map((ct) => ct.cardType),
-			cardFeature: null,
 			networkType: networkTypes.map((nt) => nt.networkType),
-			joiningFee: null,
 			employmentType: employmentTypes.map((et) => et.employmentType),
-			faqdetails: null,
-			seoDetail: null,
 			pageCount: totalPages,
 			page: page,
 			cardCount: cards.length,
 			totalCardCount: totalCount,
 			cardIssuer: transformedCards,
 			cardFeatureList: cardFeatureList,
-			statistics: null,
-			thisIssuer: null,
-			cardIssuerId: null,
-			referralLink: null,
-			finedineuser: null,
-			premiumuser: null,
-			mode: null,
-			leads: null,
-			cardLeads: null,
-			seoSchemas: null,
 			pagination: {
 				currentPage: page,
 				totalPages: totalPages,
@@ -212,7 +195,7 @@ export async function POST(req: NextRequest) {
 			{ status: 500 },
 		);
 	} finally {
-		await prisma.$disconnect();
+		// No need to disconnect with singleton pattern
 	}
 }
 

@@ -1,9 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { PrismaClient } from "@prisma/client";
 // app/api/search/route.ts
 import { type NextRequest, NextResponse } from "next/server";
-
-const prisma = new PrismaClient();
+import { prisma } from "~/lib/database";
 const genAI = new GoogleGenerativeAI(
 	process.env.NEXT_PUBLIC_GEMINI_API_KEY || "",
 );
@@ -261,7 +259,7 @@ export async function POST(req: NextRequest) {
 			{ status: 500 },
 		);
 	} finally {
-		await prisma.$disconnect();
+		// No need to disconnect with singleton pattern
 	}
 }
 
@@ -295,5 +293,7 @@ export async function GET(req: NextRequest) {
 			{ error: "Internal server error" },
 			{ status: 500 },
 		);
+	} finally {
+		// No need to disconnect with singleton pattern
 	}
 }

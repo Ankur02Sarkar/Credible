@@ -1,8 +1,6 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { PrismaClient } from "@prisma/client";
+import { prisma } from "~/lib/database";
 import type { CardFeature, CreditCard } from "~/types/credit-card";
-
-const prisma = new PrismaClient();
 
 // Initialize the Gemini AI client
 const genAI = new GoogleGenerativeAI(

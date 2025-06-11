@@ -128,7 +128,7 @@ export default function Home() {
 		}
 	}, [filters, hasMore, loadingMore, fetchCards]);
 
-	// AI query processing
+	// AI query processing using semantic search
 	const handleAiQuery = useCallback(
 		async (query: string) => {
 			setAiLoading(true);
@@ -136,14 +136,47 @@ export default function Home() {
 			setIsAiMode(true);
 
 			try {
-				const result = await geminiService.processNaturalLanguageQuery(
+				// Use the semantic search API
+				const response = await fetch("/api/search", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						query,
+						limit: 20,
+						threshold: 0.6, // Lower threshold for more results
+					}),
+				});
+
+				if (!response.ok) {
+					throw new Error(`Search failed with status ${response.status}`);
+				}
+
+				const searchResult = await response.json();
+
+				// Transform search results to match expected format
+				const result: QueryResult = {
 					query,
-					allCards.length > 0 ? allCards : cards,
-					features,
-				);
+					filteredCards: searchResult.results || [],
+					explanation:
+						searchResult.searchType === "semantic"
+							? `Found ${searchResult.totalResults} cards using AI semantic search with ${Math.round((searchResult.results[0]?.similarity || 0) * 100)}% relevance.`
+							: `Found ${searchResult.totalResults} cards using keyword search.`,
+					confidence:
+						searchResult.searchType === "semantic"
+							? Math.round((searchResult.results[0]?.similarity || 0.5) * 100)
+							: 70,
+				};
 
 				setAiResults(result);
 				setCards(result.filteredCards);
+
+				// Update features from the search results
+				const searchFeatures = searchResult.results.flatMap(
+					(card: any) => card.features || [],
+				);
+				setFeatures(searchFeatures);
 
 				// Add to recent queries
 				const updatedRecent = [
@@ -159,7 +192,7 @@ export default function Home() {
 				setAiLoading(false);
 			}
 		},
-		[allCards, cards, features, recentQueries],
+		[recentQueries],
 	);
 
 	// Handle card selection for comparison
@@ -180,9 +213,10 @@ export default function Home() {
 		setIsAiMode(false);
 		setAiResults(null);
 		setAiQuery("");
-		setCards(allCards);
 		setError(null);
-	}, [allCards]);
+		// Refresh cards from the database
+		fetchCards(filters, false);
+	}, [filters, fetchCards]);
 
 	// Initial load and setup
 	useEffect(() => {
@@ -199,16 +233,36 @@ export default function Home() {
 		}
 	}, []); // Empty dependency array for initial load only
 
+	// Set allCards when cards are loaded
+	useEffect(() => {
+		if (cards.length > 0 && !isAiMode) {
+			setAllCards(cards);
+		}
+	}, [cards, isAiMode]);
+
 	// Generate suggested queries when cards are loaded
 	useEffect(() => {
-		if (allCards.length > 0 && features.length > 0) {
-			const suggestions = geminiService.generateSuggestedQueries(
-				allCards,
-				features,
-			);
-			setSuggestedQueries(suggestions);
-		}
-	}, [allCards, features]);
+		const generateSuggestions = async () => {
+			if (cards.length > 0) {
+				try {
+					const suggestions = await geminiService.generateSuggestedQueries();
+					setSuggestedQueries(suggestions);
+				} catch (error) {
+					console.error("Failed to generate suggestions:", error);
+					// Fallback suggestions
+					setSuggestedQueries([
+						"Best travel credit cards with lounge access",
+						"Cards with no annual fee for beginners",
+						"Premium cards for high income earners",
+						"Best cashback cards for fuel and dining",
+						"Credit cards with instant approval",
+					]);
+				}
+			}
+		};
+
+		generateSuggestions();
+	}, [cards.length]);
 
 	return (
 		<ErrorBoundary
@@ -537,18 +591,31 @@ export default function Home() {
 				{/* Custom Styles */}
 				<style jsx global>{`
           @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+            50% {
+              transform: translateY(-10px);
+            }
           }
-          
+
           @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); }
-            to { box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); }
+            from {
+              box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            }
+            to {
+              box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            }
           }
-          
+
           @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+            0% {
+              background-position: -200% 0;
+            }
+            100% {
+              background-position: 200% 0;
+            }
           }
 
           .scrollbar-thin {
