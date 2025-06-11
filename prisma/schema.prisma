@@ -18,3 +18,226 @@ model Post {
 
     @@index([name])
 }
+
+model CreditCard {
+    id                   String        @id @default(cuid())
+    cardID               String        @unique
+    cardName             String
+    cardImage            String
+    cardIssuerName       String?
+    cardLogo             String?
+    cardIssuerID         String?
+    issuerImage          String
+    issuerSlug           String
+    isFeatured           Int           @default(0)
+    cardCount            Int?
+    publish              Int           @default(1)
+    joiningFee           String
+    annualFee            String
+    minMonthlyIncome     Int
+    annualPercentageRate String
+    cardType             String
+    employmentType       String
+    networkType          String?
+    urlSlug              String        @unique
+    overAllRating        Float         @default(0)
+    statsCount           Int           @default(0)
+    rewardPoints         String?
+    bestFor              String
+    totalCards           Int?
+    rewardRate           String
+    referralLink         String?
+    datecreated          DateTime      @default(now())
+    createdAt            DateTime      @default(now())
+    updatedAt            DateTime      @updatedAt
+    
+    // Relations
+    features             CardFeature[]
+    embeddings           CardEmbedding[]
+    
+    // Indexes for search and filtering
+    @@index([cardType])
+    @@index([employmentType])
+    @@index([minMonthlyIncome])
+    @@index([bestFor])
+    @@index([overAllRating])
+    @@index([isFeatured])
+    @@index([publish])
+    @@map("credit_cards")
+}
+
+model CardFeature {
+    id             String      @id @default(cuid())
+    cardFeatureID  String?
+    cardID         String
+    serialNumber   Int?
+    heading        String
+    description    String?
+    createdAt      DateTime    @default(now())
+    updatedAt      DateTime    @updatedAt
+    
+    // Relations
+    card           CreditCard  @relation(fields: [cardID], references: [cardID], onDelete: Cascade)
+    
+    @@unique([cardID, heading])
+    @@index([cardID])
+    @@index([heading])
+    @@map("card_features")
+}
+
+model CardEmbedding {
+    id          String     @id @default(cuid())
+    cardID      String
+    content     String     // The text content that was embedded
+    contentType String     // Type of content: 'card_summary', 'features', 'benefits', etc.
+    embedding   Float[]    // Vector embedding (using array of floats)
+    createdAt   DateTime   @default(now())
+    updatedAt   DateTime   @updatedAt
+    
+    // Relations
+    card        CreditCard @relation(fields: [cardID], references: [cardID], onDelete: Cascade)
+    
+    @@unique([cardID, contentType])
+    @@index([cardID])
+    @@index([contentType])
+    @@map("card_embeddings")
+}
+
+model CardIssuer {
+    id           String   @id @default(cuid())
+    issuerID     String   @unique
+    issuerName   String
+    issuerSlug   String   @unique
+    issuerImage  String
+    logo         String?
+    description  String?
+    website      String?
+    isActive     Boolean  @default(true)
+    createdAt    DateTime @default(now())
+    updatedAt    DateTime @updatedAt
+    
+    @@index([issuerSlug])
+    @@index([isActive])
+    @@map("card_issuers")
+}
+
+model CardType {
+    id          String   @id @default(cuid())
+    typeID      String   @unique
+    typeName    String   @unique
+    description String?
+    isActive    Boolean  @default(true)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    
+    @@index([typeName])
+    @@index([isActive])
+    @@map("card_types")
+}
+
+model NetworkType {
+    id          String   @id @default(cuid())
+    networkID   String   @unique
+    networkName String   @unique
+    description String?
+    logo        String?
+    isActive    Boolean  @default(true)
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    
+    @@index([networkName])
+    @@index([isActive])
+    @@map("network_types")
+}
+
+model EmploymentType {
+    id             String   @id @default(cuid())
+    employmentID   String   @unique
+    employmentName String   @unique
+    description    String?
+    isActive       Boolean  @default(true)
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
+    
+    @@index([employmentName])
+    @@index([isActive])
+    @@map("employment_types")
+}
+
+model SearchQuery {
+    id            String      @id @default(cuid())
+    query         String
+    queryType     String      // 'natural_language', 'filter', 'comparison'
+    filters       Json?       // Store filter parameters as JSON
+    resultCount   Int         @default(0)
+    userId        String?     // Optional user tracking
+    sessionId     String?     // Optional session tracking
+    executionTime Int?        // Query execution time in milliseconds
+    createdAt     DateTime    @default(now())
+    
+    @@index([queryType])
+    @@index([createdAt])
+    @@index([userId])
+    @@map("search_queries")
+}
+
+model UserPreference {
+    id               String   @id @default(cuid())
+    userId           String   @unique
+    preferredCardTypes String[] // Array of preferred card types
+    incomeRange      String?
+    employmentType   String?
+    spendingCategories String[] // Array of spending categories
+    preferences      Json?    // Additional preferences as JSON
+    createdAt        DateTime @default(now())
+    updatedAt        DateTime @updatedAt
+    
+    @@index([userId])
+    @@map("user_preferences")
+}
+
+model ChatSession {
+    id          String        @id @default(cuid())
+    sessionId   String        @unique
+    userId      String?
+    isActive    Boolean       @default(true)
+    createdAt   DateTime      @default(now())
+    updatedAt   DateTime      @updatedAt
+    
+    // Relations
+    messages    ChatMessage[]
+    
+    @@index([sessionId])
+    @@index([userId])
+    @@index([createdAt])
+    @@map("chat_sessions")
+}
+
+model ChatMessage {
+    id          String      @id @default(cuid())
+    sessionId   String
+    role        String      // 'user' or 'assistant'
+    content     String
+    metadata    Json?       // Additional metadata like card IDs, query results, etc.
+    createdAt   DateTime    @default(now())
+    
+    // Relations
+    session     ChatSession @relation(fields: [sessionId], references: [sessionId], onDelete: Cascade)
+    
+    @@index([sessionId])
+    @@index([createdAt])
+    @@map("chat_messages")
+}
+
+model ApiCache {
+    id          String   @id @default(cuid())
+    cacheKey    String   @unique
+    data        Json
+    expiresAt   DateTime
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    
+    @@index([cacheKey])
+    @@index([expiresAt])
+    @@map("api_cache")
+}
