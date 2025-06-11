@@ -1,0 +1,525 @@
+{
+	"thisCard": null,
+	"issuerList": null,
+	"cardType": null,
+	"cardFeature": null,
+	"networkType": null,
+	"joiningFee": null,
+	"employmentType": null,
+	"faqdetails": null,
+	"seoDetail": null,
+	"pageCount": 1,
+	"page": 1,
+	"cardCount": 6,
+	"totalCardCount": 6,
+	"cardIssuer": [
+		{
+			"cardIssuerName": null,
+			"cardLogo": null,
+			"cardIssuerID": null,
+			"issuerImage": "Select/Issuers/b3cb2b36108e4843ba653bfcb3c5e3e7.jpg",
+			"issuerSlug": "hdfc-bank-regalia-credit-card",
+			"isFeatured": 0,
+			"cardCount": null,
+			"publish": 1,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"cardName": "HDFC Bank Regalia ",
+			"cardImage": "Select/CreditCards/a371aaded5454a5ab44978e17e5c4f30.png",
+			"joiningFee": "₹ 2500 | plus Applicable Taxes ",
+			"annualFee": "₹ 2500 | plus Applicable Taxes ",
+			"minMonthlyIncome": 100000,
+			"annualPercentageRate": "3.60% per month | 43.2% ",
+			"cardType": "Premium Cards",
+			"employmentType": "Salaried | Self Employed ",
+			"networkType": null,
+			"urlSlug": "hdfc-bank-regalia-credit-card",
+			"overAllRating": 4.6,
+			"statsCount": 30945,
+			"datecreated": "2023-04-03T15:05:30.413",
+			"rewardPoints": null,
+			"bestFor": "Lifestyle",
+			"totalCards": null,
+			"rewardRate": "1.3% to 13%",
+			"referralLink": null
+		},
+		{
+			"cardIssuerName": null,
+			"cardLogo": null,
+			"cardIssuerID": null,
+			"issuerImage": "Select/Issuers/432cc53956cd41edbfdb2fe5ef1406ec.jpg",
+			"issuerSlug": "american-express-bank-platinum-travel-credit-card",
+			"isFeatured": 0,
+			"cardCount": null,
+			"publish": 1,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"cardName": "American Express Platinum Travel ",
+			"cardImage": "Select/CreditCards/89137c4a60ff4fd2a73205b53a845ad8.png",
+			"joiningFee": "₹ 3,500 | plus applicable taxes",
+			"annualFee": "₹ 5,000 | plus applicable taxes ",
+			"minMonthlyIncome": 50000,
+			"annualPercentageRate": "3.50% per month | 42% ",
+			"cardType": "Travel Cards",
+			"employmentType": "Salaried | Self Employed ",
+			"networkType": null,
+			"urlSlug": "american-express-bank-platinum-travel-credit-card",
+			"overAllRating": 4.5,
+			"statsCount": 18206,
+			"datecreated": "2023-04-06T17:47:57.547",
+			"rewardPoints": null,
+			"bestFor": "Travel",
+			"totalCards": null,
+			"rewardRate": "3% to 7.5%",
+			"referralLink": null
+		},
+		{
+			"cardIssuerName": null,
+			"cardLogo": null,
+			"cardIssuerID": null,
+			"issuerImage": "Select/Issuers/3435351e157a4dd28f8d5f76253faac5.jpg",
+			"issuerSlug": "sbi-bank-elite-credit-card",
+			"isFeatured": 0,
+			"cardCount": null,
+			"publish": 1,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"cardName": "SBI Elite ",
+			"cardImage": "Select/CreditCards/c3facbddb5e84ad9a9ce4d83cadb7d2a.png",
+			"joiningFee": "₹4,999 | plus applicable taxes",
+			"annualFee": "₹4,999 | plus applicable taxes",
+			"minMonthlyIncome": 60000,
+			"annualPercentageRate": "3.50% per month | 42% ",
+			"cardType": "Premium Cards",
+			"employmentType": "Salaried | Self Employed ",
+			"networkType": null,
+			"urlSlug": "sbi-bank-elite-credit-card",
+			"overAllRating": 4.5,
+			"statsCount": 22062,
+			"datecreated": "2023-04-06T00:40:51.567",
+			"rewardPoints": null,
+			"bestFor": "Rewards",
+			"totalCards": null,
+			"rewardRate": "0.5% to 5%",
+			"referralLink": null
+		},
+		{
+			"cardIssuerName": null,
+			"cardLogo": null,
+			"cardIssuerID": null,
+			"issuerImage": "Select/Issuers/432cc53956cd41edbfdb2fe5ef1406ec.jpg",
+			"issuerSlug": "american-express-membership-rewards-credit-card",
+			"isFeatured": 0,
+			"cardCount": null,
+			"publish": 1,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"cardName": "American Express Membership Rewards",
+			"cardImage": "Select/CreditCards/ede46ecf92a8407abf1d7c6d466ca811.png",
+			"joiningFee": "₹ 1,000 | plus applicable taxes",
+			"annualFee": "₹ 4,500 | plus applicable taxes",
+			"minMonthlyIncome": 50000,
+			"annualPercentageRate": "3.50% per month | 42% ",
+			"cardType": "Regular Cards",
+			"employmentType": "Salaried | Self Employed ",
+			"networkType": null,
+			"urlSlug": "american-express-membership-rewards-credit-card",
+			"overAllRating": 4.5,
+			"statsCount": 13222,
+			"datecreated": "2023-04-07T16:15:57.353",
+			"rewardPoints": null,
+			"bestFor": "Rewards",
+			"totalCards": null,
+			"rewardRate": "1% to 5%",
+			"referralLink": null
+		},
+		{
+			"cardIssuerName": null,
+			"cardLogo": null,
+			"cardIssuerID": null,
+			"issuerImage": "Select/Issuers/c393b3670d424f7e84c6f5c22b472612.jpg",
+			"issuerSlug": "standard-chartered-super-value-titanium-level-credit-card",
+			"isFeatured": 0,
+			"cardCount": null,
+			"publish": 1,
+			"cardID": "f472442b-b90b-421a-ac3e-a0fb15ff9253",
+			"cardName": "Standard Chartered Super Value Titanium ",
+			"cardImage": "Select/CreditCards/174e1eed23064b44bdb2b02b1944ed4b.png",
+			"joiningFee": "₹750 | plus applicable taxes",
+			"annualFee": "₹750 | plus applicable taxes",
+			"minMonthlyIncome": 55000,
+			"annualPercentageRate": "3.75% per month | 45% ",
+			"cardType": "Regular Cards",
+			"employmentType": "Salaried | Self Employed ",
+			"networkType": null,
+			"urlSlug": "standard-chartered-super-value-titanium-level-credit-card",
+			"overAllRating": 4.3,
+			"statsCount": 13215,
+			"datecreated": "2023-04-07T00:53:50.943",
+			"rewardPoints": null,
+			"bestFor": "Cashback",
+			"totalCards": null,
+			"rewardRate": "0.2% to 5%",
+			"referralLink": null
+		},
+		{
+			"cardIssuerName": null,
+			"cardLogo": null,
+			"cardIssuerID": null,
+			"issuerImage": "Select/Issuers/d01883580ecf430fbf46f73169fcc23f.jpg",
+			"issuerSlug": "axis-bank-vistara-signature-credit-card",
+			"isFeatured": 0,
+			"cardCount": null,
+			"publish": 1,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"cardName": "Axis Bank Vistara Signature ",
+			"cardImage": "Select/CreditCards/2e571ffb2a314d5db3631c67aa6b7755.png",
+			"joiningFee": "₹3,000",
+			"annualFee": "₹3,000",
+			"minMonthlyIncome": 50000,
+			"annualPercentageRate": "3.60% per month | 52.86% ",
+			"cardType": "Co-Branded Cards",
+			"employmentType": "Salaried | Self Employed ",
+			"networkType": null,
+			"urlSlug": "axis-bank-vistara-signature-credit-card",
+			"overAllRating": 4.3,
+			"statsCount": 11922,
+			"datecreated": "2023-04-06T23:44:41.93",
+			"rewardPoints": null,
+			"bestFor": "Travel",
+			"totalCards": null,
+			"rewardRate": "Up to 4%",
+			"referralLink": null
+		}
+	],
+	"cardFeatureList": [
+		{
+			"cardFeatureID": null,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"serialNumber": null,
+			"heading": "Reward Points",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "f472442b-b90b-421a-ac3e-a0fb15ff9253",
+			"serialNumber": null,
+			"heading": "Reward Points",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Zero Lost Card Liability",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"serialNumber": null,
+			"heading": "Other Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "Welcome Bonus",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Travel Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "f472442b-b90b-421a-ac3e-a0fb15ff9253",
+			"serialNumber": null,
+			"heading": "Cashback Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Lounge Access",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "Reward Points",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "Fuel Surcharge",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"serialNumber": null,
+			"heading": "Milestone Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Lounge Access",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Milestone Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Welcome Bonus",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "Milestone Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"serialNumber": null,
+			"heading": "EMI Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "Zero Lost Card Liability",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"serialNumber": null,
+			"heading": "Dining Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "Reward Points",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "EMI Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "Welcome Bonus",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Dining Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "f472442b-b90b-421a-ac3e-a0fb15ff9253",
+			"serialNumber": null,
+			"heading": "EMI Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "Zero Lost Card Liability",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Reward Points",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Insurance Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Reward Points",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Dining Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Milestone Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Travel Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "EMI Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Other Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "EMI Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"serialNumber": null,
+			"heading": "Fuel Surcharge",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "c0ed1340-69da-42b3-98c7-9f848002cf51",
+			"serialNumber": null,
+			"heading": "Welcome Bonus",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "Concierge Services",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "06c09e9e-81e7-4795-804f-dd974407ddb1",
+			"serialNumber": null,
+			"heading": "Fuel Surcharge",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "EMI Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Welcome Bonus",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "Lounge Access",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "4c451e70-3587-4674-916c-0e206e2ec8ac",
+			"serialNumber": null,
+			"heading": "Other Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "Milestone Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "Entertainment Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "73ddc2a0-ea08-42e2-9812-d554fe8879e4",
+			"serialNumber": null,
+			"heading": "Fuel Surcharge",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "1d8c302f-544c-492a-9713-501b893b328c",
+			"serialNumber": null,
+			"heading": "Insurance Benefit",
+			"description": null
+		},
+		{
+			"cardFeatureID": null,
+			"cardID": "f472442b-b90b-421a-ac3e-a0fb15ff9253",
+			"serialNumber": null,
+			"heading": "Fuel Surcharge",
+			"description": null
+		}
+	],
+	"statistics": null,
+	"thisIssuer": null,
+	"cardIssuerId": null,
+	"referralLink": null,
+	"finedineuser": null,
+	"premiumuser": null,
+	"mode": null,
+	"leads": null,
+	"cardLeads": null,
+	"seoSchemas": null
+}
