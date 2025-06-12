@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { ChevronDown, Loader2, Sparkles } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { RatingDisplay } from "~/components/ui/rating-stars";
 import { type CardSummary, geminiService } from "~/lib/ai/gemini-service";
@@ -159,7 +160,7 @@ export function CreditCardItem({
 			)}
 		>
 			{/* Background Gradient Overlay */}
-			<div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:from-white/3 dark:to-white/3" />
+			{/* <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100 dark:from-white/3 dark:to-white/3" /> */}
 
 			{/* Card Header */}
 			<div className="relative border-white/10 border-b p-4 sm:p-6 dark:border-white/5">
@@ -506,9 +507,11 @@ export function CreditCardItem({
 			</div>
 
 			{/* Action Button */}
-			{/* <div className="p-4 pt-0 sm:p-6">
+			<div className="p-4 pt-0 sm:p-6 cursor-pointer">
 				<button
-					onClick={() => onViewDetails?.(card.cardID)}
+					onClick={() => {
+						window.open(`https://select.finology.in/credit-card/${card.issuerSlug}`, "_blank");
+					}}
 					className={cn(
 						"w-full rounded-xl px-4 py-2.5 font-medium text-sm sm:py-3 sm:text-base",
 						"transition-all duration-300",
@@ -516,12 +519,12 @@ export function CreditCardItem({
 						"hover:from-blue-500 hover:to-purple-500",
 						"text-white shadow-lg hover:shadow-xl",
 						"focus:outline-none focus:ring-2 focus:ring-blue-500/50",
-						"transform hover:scale-[1.02] active:scale-[0.98]",
+						"transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer",
 					)}
 				>
-					Full Details
+					Apply Now
 				</button>
-			</div> */}
+			</div>
 
 			{/* Floating Elements */}
 			<div className="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
