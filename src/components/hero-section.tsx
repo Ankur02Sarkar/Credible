@@ -121,7 +121,9 @@ export default function HeroSection() {
 									as="p"
 									className="mx-auto mt-8 max-w-2xl text-balance text-lg"
 								>
-									Find the perfect credit card that matches your lifestyle and financial needs with our AI-powered comparison and recommendation engine.
+									Find the perfect credit card that matches your lifestyle and
+									financial needs with our AI-powered comparison and
+									recommendation engine.
 								</TextEffect>
 
 								<AnimatedGroup

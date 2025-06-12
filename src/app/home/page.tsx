@@ -291,14 +291,12 @@ export default function Home() {
 						)}
 					>
 						<div className="mx-auto max-w-7xl">
-							<div className="flex items-center justify-between">
-								
-							</div>
+							<div className="flex items-center justify-between"></div>
 						</div>
 					</div>
 
 					{/* Main Content */}
-					<div className="mx-auto max-w-[90vw] space-y-8 p-4 mt-12">
+					<div className="mx-auto mt-12 max-w-[90vw] space-y-8 p-4">
 						{/* AI Search Section */}
 						<ErrorBoundary
 							fallback={({ resetError }) => (

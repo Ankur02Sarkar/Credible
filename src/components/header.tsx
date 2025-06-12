@@ -43,7 +43,7 @@ export const HeroHeader = () => {
 							<Link
 								href="/"
 								aria-label="home"
-								className="flex items-center space-x-2 text-black dark:text-white cursor-pointer"
+								className="flex cursor-pointer items-center space-x-2 text-black dark:text-white"
 							>
 								<Logo />
 								Credible
@@ -59,9 +59,7 @@ export const HeroHeader = () => {
 							</button>
 						</div>
 
-						<div className="absolute inset-0 m-auto hidden size-fit lg:block">
-							
-						</div>
+						<div className="absolute inset-0 m-auto hidden size-fit lg:block"></div>
 
 						<div className="mb-6 in-data-[state=active]:block hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border bg-background p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:in-data-[state=active]:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent">
 							<div className="lg:hidden">

@@ -155,7 +155,7 @@ export function CreditCardItem({
 				glassmorphism.cardHover,
 				glassGradients.card,
 				"shadow-2xl hover:shadow-3xl",
-				"border border-white/10 dark:border-white/5 justify-between",
+				"justify-between border border-white/10 dark:border-white/5",
 				className,
 			)}
 		>
@@ -507,10 +507,13 @@ export function CreditCardItem({
 			</div>
 
 			{/* Action Button */}
-			<div className="p-4 pt-0 sm:p-6 cursor-pointer">
+			<div className="cursor-pointer p-4 pt-0 sm:p-6">
 				<button
 					onClick={() => {
-						window.open(`https://select.finology.in/credit-card/${card.issuerSlug}`, "_blank");
+						window.open(
+							`https://select.finology.in/credit-card/${card.issuerSlug}`,
+							"_blank",
+						);
 					}}
 					className={cn(
 						"w-full rounded-xl px-4 py-2.5 font-medium text-sm sm:py-3 sm:text-base",
@@ -519,7 +522,7 @@ export function CreditCardItem({
 						"hover:from-blue-500 hover:to-purple-500",
 						"text-white shadow-lg hover:shadow-xl",
 						"focus:outline-none focus:ring-2 focus:ring-blue-500/50",
-						"transform hover:scale-[1.02] active:scale-[0.98] cursor-pointer",
+						"transform cursor-pointer hover:scale-[1.02] active:scale-[0.98]",
 					)}
 				>
 					Apply Now

@@ -162,7 +162,7 @@ export async function POST(req: NextRequest) {
 				conversationLength: previousMessages.length + 2, // +2 for current exchange
 			},
 		});
-	} catch (error:any) {
+	} catch (error: any) {
 		console.error("Chat API error:", error);
 		return NextResponse.json(
 			{
