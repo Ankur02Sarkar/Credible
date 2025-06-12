@@ -1,7 +1,5 @@
 #!/usr/bin/env tsx
 
-import fetch from "node-fetch";
-
 // Base URL for local development
 const BASE_URL = "http://localhost:3000";
 

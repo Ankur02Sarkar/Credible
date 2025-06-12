@@ -154,9 +154,6 @@ export async function POST(req: NextRequest) {
 			},
 			include: {
 				card: {
-					where: {
-						publish: 1,
-					},
 					include: {
 						features: {
 							orderBy: {
@@ -170,7 +167,7 @@ export async function POST(req: NextRequest) {
 
 		// Calculate similarities
 		const similarities = cardEmbeddings
-			.filter((embedding) => embedding.card) // Only include cards that exist and are published
+			.filter((embedding) => embedding.card && embedding.card.publish === 1) // Only include cards that exist and are published
 			.map((embedding) => {
 				const similarity = cosineSimilarity(
 					queryEmbedding,
