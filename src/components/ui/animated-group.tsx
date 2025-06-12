@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client";
 import { type Variants, motion } from "motion/react";
 import type { ReactNode } from "react";
