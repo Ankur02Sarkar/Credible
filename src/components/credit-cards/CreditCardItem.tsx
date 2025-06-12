@@ -154,7 +154,7 @@ export function CreditCardItem({
 				glassmorphism.cardHover,
 				glassGradients.card,
 				"shadow-2xl hover:shadow-3xl",
-				"border border-white/10 dark:border-white/5",
+				"border border-white/10 dark:border-white/5 justify-between",
 				className,
 			)}
 		>
@@ -506,7 +506,7 @@ export function CreditCardItem({
 			</div>
 
 			{/* Action Button */}
-			<div className="p-4 pt-0 sm:p-6">
+			{/* <div className="p-4 pt-0 sm:p-6">
 				<button
 					onClick={() => onViewDetails?.(card.cardID)}
 					className={cn(
@@ -521,7 +521,7 @@ export function CreditCardItem({
 				>
 					Full Details
 				</button>
-			</div>
+			</div> */}
 
 			{/* Floating Elements */}
 			<div className="absolute top-4 right-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">

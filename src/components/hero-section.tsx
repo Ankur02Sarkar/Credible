@@ -88,7 +88,7 @@ export default function HeroSection() {
 										className="group mx-auto flex w-fit items-center gap-4 rounded-full border bg-muted p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 hover:bg-background dark:border-t-white/5 dark:shadow-zinc-950 dark:hover:border-t-border"
 									>
 										<span className="text-foreground text-sm">
-											Introducing Support for AI Models
+											Introducing Semantic Search for Credit Cards
 										</span>
 										<span className="block h-4 w-0.5 border-l bg-white dark:border-background dark:bg-zinc-700"></span>
 
@@ -111,7 +111,7 @@ export default function HeroSection() {
 									as="h1"
 									className="mt-8 text-balance text-6xl md:text-7xl lg:mt-16 xl:text-[5.25rem]"
 								>
-									Modern Solutions for Customer Engagement
+									AI-Powered Credit Card Comparison
 								</TextEffect>
 								<TextEffect
 									per="line"
@@ -121,8 +121,7 @@ export default function HeroSection() {
 									as="p"
 									className="mx-auto mt-8 max-w-2xl text-balance text-lg"
 								>
-									Highly customizable components for building modern websites
-									and applications that look and feel the way you mean it.
+									Find the perfect credit card that matches your lifestyle and financial needs with our AI-powered comparison and recommendation engine.
 								</TextEffect>
 
 								<AnimatedGroup
@@ -149,7 +148,7 @@ export default function HeroSection() {
 											className="rounded-xl px-5 text-base"
 										>
 											<Link href="/home">
-												<span className="text-nowrap">Start Building</span>
+												<span className="text-nowrap">Compare Cards</span>
 											</Link>
 										</Button>
 									</div>
@@ -202,7 +201,7 @@ export default function HeroSection() {
 								href="/"
 								className="block text-sm duration-150 hover:opacity-75"
 							>
-								<span> Discover all Cards</span>
+								<span>Explore All Credit Cards</span>
 
 								<ChevronRight className="ml-1 inline-block size-3" />
 							</Link>

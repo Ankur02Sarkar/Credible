@@ -292,37 +292,13 @@ export default function Home() {
 					>
 						<div className="mx-auto max-w-7xl">
 							<div className="flex items-center justify-between">
-								<div className="space-y-1">
-									<h1 className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-bold text-2xl text-transparent">
-										Credit Cards
-									</h1>
-									<p className="text-muted-foreground text-sm">
-										Find the perfect credit card for your needs
-									</p>
-								</div>
-
-								{totalCards > 0 && (
-									<div
-										className={cn(
-											"rounded-xl px-4 py-2",
-											glassmorphism.card,
-											"border border-white/10 dark:border-white/5",
-										)}
-									>
-										<div className="text-muted-foreground text-sm">
-											Total Cards
-										</div>
-										<div className="font-semibold text-foreground text-lg">
-											{totalCards}
-										</div>
-									</div>
-								)}
+								
 							</div>
 						</div>
 					</div>
 
 					{/* Main Content */}
-					<div className="mx-auto max-w-7xl space-y-8 p-4">
+					<div className="mx-auto max-w-[90vw] space-y-8 p-4 mt-12">
 						{/* AI Search Section */}
 						<ErrorBoundary
 							fallback={({ resetError }) => (
